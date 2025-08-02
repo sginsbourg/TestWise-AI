@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { documentation } from '@/lib/documentation';
 
 interface ModelTesterProps {
   onRunTest: (input: string, testScenario: string) => void;
@@ -17,6 +18,7 @@ interface ModelTesterProps {
 export function ModelTester({ onRunTest }: ModelTesterProps) {
   const [input, setInput] = useState('');
   const [testScenario, setTestScenario] = useState('');
+  const doc = documentation.modelTester;
 
   const handleRunTest = () => {
     onRunTest(input, testScenario);
@@ -29,11 +31,9 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
       <CardHeader>
         <div className="flex items-center gap-3">
           <PlayCircle className="h-6 w-6 text-primary" />
-          <CardTitle>AI Model Tester</CardTitle>
+          <CardTitle>{doc.title}</CardTitle>
         </div>
-        <CardDescription>
-          Manually test your AI model with specific inputs and scenarios. This allows for targeted testing of known problem areas or new use cases. The results will be added to the Test Logs.
-        </CardDescription>
+        <CardDescription>{doc.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <TooltipProvider>
@@ -44,7 +44,7 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
                   <Label htmlFor="test-scenario">Test Scenario</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Describe the context for this test. For example, "Testing a sarcastic comment" or "Testing a long sentence".<br/> This helps when analyzing the results later.</p>
+                  <p>{doc.testScenario.tooltip}</p>
                 </TooltipContent>
               </Tooltip>
               <Input
@@ -60,7 +60,7 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
                   <Label htmlFor="test-input">Input for Model</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Enter the exact text you want to send to the AI model for this test case. <br/>You can paste inputs from the generator or write your own.</p>
+                  <p>{doc.inputForModel.tooltip}</p>
                 </TooltipContent>
               </Tooltip>
               <Textarea
@@ -78,7 +78,7 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Execute the test with the provided scenario and input. <br/>A new log entry will be created with the model's output.</p>
+                <p>{doc.runTestButton.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           </div>

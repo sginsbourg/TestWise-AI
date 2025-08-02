@@ -10,6 +10,7 @@ import { InputGenerator } from '@/components/InputGenerator';
 import { ModelTester } from '@/components/ModelTester';
 import { LogSummarizer } from '@/components/LogSummarizer';
 import { TestLogger } from '@/components/TestLogger';
+import { DocumentationViewer } from '@/components/DocumentationViewer';
 import { 
   generateDiverseInputsAction, 
   assessOutputQualityAction,
@@ -141,6 +142,7 @@ export default function Home() {
               isLoading={isGeneratingInputs}
             />
             <ModelTester onRunTest={handleRunTest} />
+            <DocumentationViewer />
           </div>
           <div className="lg:col-span-3 flex flex-col gap-8">
             <LogSummarizer 

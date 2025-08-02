@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import type { TestLog, FeedbackType } from '@/lib/types';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { documentation } from '@/lib/documentation';
 
 interface TestLoggerProps {
   logs: TestLog[];
@@ -21,22 +22,21 @@ const feedbackOptions: {
   className: string;
   tooltip: string;
 }[] = [
-  { value: 'Acceptable', label: 'Acceptable', icon: Check, className: 'bg-accent hover:bg-accent/90 text-accent-foreground', tooltip: 'The model output is correct and meets all expectations for the given scenario.' },
-  { value: 'Needs Improvement', label: 'Needs Improvement', icon: HelpCircle, className: 'bg-warning hover:bg-warning/90 text-warning-foreground', tooltip: 'The output is partially correct or acceptable, but has minor issues or could be better.' },
-  { value: 'Unacceptable', label: 'Unacceptable', icon: X, className: 'bg-destructive hover:bg-destructive/90 text-destructive-foreground', tooltip: 'The output is incorrect, irrelevant, harmful, or otherwise a clear failure.' },
+  { value: 'Acceptable', label: 'Acceptable', icon: Check, className: 'bg-accent hover:bg-accent/90 text-accent-foreground', tooltip: documentation.testLogger.feedback.acceptable },
+  { value: 'Needs Improvement', label: 'Needs Improvement', icon: HelpCircle, className: 'bg-warning hover:bg-warning/90 text-warning-foreground', tooltip: documentation.testLogger.feedback.needsImprovement },
+  { value: 'Unacceptable', label: 'Unacceptable', icon: X, className: 'bg-destructive hover:bg-destructive/90 text-destructive-foreground', tooltip: documentation.testLogger.feedback.unacceptable },
 ];
 
 export function TestLogger({ logs, onFeedback, feedbackLoadingId }: TestLoggerProps) {
+  const doc = documentation.testLogger;
   return (
     <Card>
       <CardHeader>
         <div className="flex items-center gap-3">
           <History className="h-6 w-6 text-primary" />
-          <CardTitle>Test Logs</CardTitle>
+          <CardTitle>{doc.title}</CardTitle>
         </div>
-        <CardDescription>
-          Review the results of each test. Provide qualitative feedback on the model's output, which helps generate a more accurate AI assessment of its performance.
-        </CardDescription>
+        <CardDescription>{doc.description}</CardDescription>
       </CardHeader>
       <CardContent>
         {logs.length === 0 ? (
@@ -59,7 +59,7 @@ export function TestLogger({ logs, onFeedback, feedbackLoadingId }: TestLoggerPr
                                 <AccordionTrigger>Qualitative Feedback Assessment</AccordionTrigger>
                               </TooltipTrigger>
                               <TooltipContent>
-                                <p>This is the AI's detailed analysis of the model's output, <br/>based on the feedback you provided. Click to expand and read the assessment.</p>
+                                <p>{doc.assessment.tooltip}</p>
                               </TooltipContent>
                             </Tooltip>
                           <AccordionContent className="whitespace-pre-wrap text-sm">

@@ -5,6 +5,7 @@ import { FileText, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { documentation } from '@/lib/documentation';
 
 interface LogSummarizerProps {
   onSummarize: () => void;
@@ -14,17 +15,16 @@ interface LogSummarizerProps {
 }
 
 export function LogSummarizer({ onSummarize, summary, isLoading, hasLogs }: LogSummarizerProps) {
+  const doc = documentation.logSummarizer;
+
   return (
     <Card>
       <CardHeader>
         <div className="flex items-center gap-3">
           <FileText className="h-6 w-6 text-primary" />
-          <CardTitle>Automated Log Summarizer</CardTitle>
+          <CardTitle>{doc.title}</CardTitle>
         </div>
-        <CardDescription>
-          This feature uses AI to analyze all of your test logs. It automatically identifies and summarizes recurring failure patterns, 
-          helping you quickly pinpoint your model's weaknesses.
-        </CardDescription>
+        <CardDescription>{doc.description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <TooltipProvider>
@@ -42,7 +42,7 @@ export function LogSummarizer({ onSummarize, summary, isLoading, hasLogs }: LogS
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Click this button to have an AI analyze all the test results from the log below. <br/> It will produce a summary highlighting common failure themes and potential issues.</p>
+              <p>{doc.summarizeButton.tooltip}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

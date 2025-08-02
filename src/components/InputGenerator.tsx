@@ -10,6 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from "@/hooks/use-toast";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { documentation } from '@/lib/documentation';
 
 interface InputGeneratorProps {
   onGenerate: (modelDescription: string, numberOfInputs: number) => void;
@@ -21,6 +22,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
   const [modelDescription, setModelDescription] = useState('A sentiment analysis model that classifies text as positive, negative, or neutral.');
   const [numberOfInputs, setNumberOfInputs] = useState(3);
   const { toast } = useToast();
+  const doc = documentation.inputGenerator;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,12 +42,9 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
       <CardHeader>
         <div className="flex items-center gap-3">
           <Lightbulb className="h-6 w-6 text-primary" />
-          <CardTitle>Diverse Input Generator</CardTitle>
+          <CardTitle>{doc.title}</CardTitle>
         </div>
-        <CardDescription>
-          This tool uses an AI to generate a variety of test inputs based on your model's description. 
-          It helps you explore edge cases, common scenarios, and potential failure points automatically.
-        </CardDescription>
+        <CardDescription>{doc.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <TooltipProvider>
@@ -56,7 +55,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                   <Label htmlFor="model-description">Model Description</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Clearly describe the AI model you want to test, including its purpose and expected input types. <br/>A good description leads to more relevant and effective test inputs.</p>
+                  <p>{doc.modelDescription.tooltip}</p>
                 </TooltipContent>
               </Tooltip>
               <Textarea
@@ -74,7 +73,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                   <Label htmlFor="num-inputs">Number of Inputs</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Select the number of distinct test inputs you want the AI to generate. <br/>You can choose between 1 and 10 inputs per generation.</p>
+                  <p>{doc.numberOfInputs.tooltip}</p>
                 </TooltipContent>
               </Tooltip>
               <Input
@@ -99,7 +98,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Click here to trigger the AI-powered input generation. <br/>The generated inputs will appear below, ready to be copied and used for testing.</p>
+                <p>{doc.generateButton.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           </form>
@@ -120,7 +119,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Copy this input to your clipboard. You can then paste it into the 'AI Model Tester' to run a test.</p>
+                        <p>{doc.copyButton.tooltip}</p>
                       </TooltipContent>
                     </Tooltip>
                   </li>
