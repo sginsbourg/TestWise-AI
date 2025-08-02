@@ -131,7 +131,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <main className="container mx-auto px-4 pb-16">
+      <main className="container mx-auto p-4">
         <SummaryCards logs={logs} />
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="lg:col-span-2 flex flex-col gap-8">
