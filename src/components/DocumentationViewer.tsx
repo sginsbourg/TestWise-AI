@@ -1,14 +1,15 @@
 
+
 "use client";
 
 import { useState } from 'react';
 import { BookOpen, Download, X } from 'lucide-react';
 import jsPDF from 'jspdf';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { documentation, type DocCategory } from '@/lib/documentation';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export function DocumentationViewer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,69 +53,68 @@ export function DocumentationViewer() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center gap-3">
-          <BookOpen className="h-6 w-6 text-primary" />
-          <CardTitle>Documentation Hub</CardTitle>
-        </div>
-        <CardDescription>
-          Review all in-app documentation in one place and export it as a PDF for offline reference or reporting.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
-            <Button className="w-full">Review & Export Documentation</Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-4xl h-[90vh] flex flex-col">
-            <DialogHeader>
-              <DialogTitle className='flex items-center justify-between'>
-                Application Documentation
-                <Button variant="ghost" size="icon" onClick={generatePdf}>
-                  <Download className="h-5 w-5" />
-                  <span className='sr-only'>Export to PDF</span>
-                </Button>
-              </DialogTitle>
-            </DialogHeader>
-            <ScrollArea className="flex-grow pr-6">
-              <div className="space-y-6">
-                {Object.entries(documentation).map(([key, value]) => {
-                  const category = value as DocCategory;
-                  return (
-                  <div key={key}>
-                    <h2 className="text-2xl font-bold text-primary mb-2">{category.title}</h2>
-                    <p className="text-muted-foreground mb-4">{category.description}</p>
-                    <div className="space-y-3 pl-4 border-l-2 border-border">
-                       {Object.entries(category).map(([itemKey, itemValue]) => {
-                          if (typeof itemValue === 'object' && itemValue !== null && 'tooltip' in itemValue) {
-                            return (
-                              <div key={itemKey}>
-                                <h4 className="font-semibold text-accent">{itemValue.label}</h4>
-                                <p className="text-sm">{itemValue.tooltip}</p>
-                              </div>
-                            );
-                          }
-                          if (itemKey === 'feedback' && typeof itemValue === 'object' && itemValue !== null) {
-                             return (
-                               <div key={itemKey}>
-                                 <h4 className="font-semibold text-accent">Feedback Buttons</h4>
-                                 {Object.values(itemValue).map((feedback, index) => (
-                                    <p key={index} className="text-sm mt-1">&#8226; {feedback}</p>
-                                 ))}
-                               </div>
-                             )
-                          }
-                          return null;
-                       })}
-                    </div>
-                  </div>
-                )})}
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                <BookOpen className="h-5 w-5 mr-2" />
+                Documentation
+              </Button>
+            </DialogTrigger>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Review and export all documentation</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <DialogContent className="max-w-4xl h-[90vh] flex flex-col">
+        <DialogHeader>
+          <DialogTitle className='flex items-center justify-between'>
+            Application Documentation
+            <Button variant="ghost" size="icon" onClick={generatePdf}>
+              <Download className="h-5 w-5" />
+              <span className='sr-only'>Export to PDF</span>
+            </Button>
+          </DialogTitle>
+        </DialogHeader>
+        <ScrollArea className="flex-grow pr-6">
+          <div className="space-y-6">
+            {Object.entries(documentation).map(([key, value]) => {
+              const category = value as DocCategory;
+              return (
+              <div key={key}>
+                <h2 className="text-2xl font-bold text-primary mb-2">{category.title}</h2>
+                <p className="text-muted-foreground mb-4">{category.description}</p>
+                <div className="space-y-3 pl-4 border-l-2 border-border">
+                    {Object.entries(category).map(([itemKey, itemValue]) => {
+                      if (typeof itemValue === 'object' && itemValue !== null && 'tooltip' in itemValue) {
+                        return (
+                          <div key={itemKey}>
+                            <h4 className="font-semibold text-accent">{itemValue.label}</h4>
+                            <p className="text-sm">{itemValue.tooltip}</p>
+                          </div>
+                        );
+                      }
+                      if (itemKey === 'feedback' && typeof itemValue === 'object' && itemValue !== null) {
+                          return (
+                            <div key={itemKey}>
+                              <h4 className="font-semibold text-accent">Feedback Buttons</h4>
+                              {Object.values(itemValue).map((feedback, index) => (
+                                <p key={index} className="text-sm mt-1">&#8226; {feedback}</p>
+                              ))}
+                            </div>
+                          )
+                      }
+                      return null;
+                    })}
+                </div>
               </div>
-            </ScrollArea>
-          </DialogContent>
-        </Dialog>
-      </CardContent>
-    </Card>
+            )})}
+          </div>
+        </ScrollArea>
+      </DialogContent>
+    </Dialog>
   );
 }

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -10,7 +11,6 @@ import { InputGenerator } from '@/components/InputGenerator';
 import { ModelTester } from '@/components/ModelTester';
 import { LogSummarizer } from '@/components/LogSummarizer';
 import { TestLogger } from '@/components/TestLogger';
-import { DocumentationViewer } from '@/components/DocumentationViewer';
 import { 
   generateDiverseInputsAction, 
   assessOutputQualityAction,
@@ -136,7 +136,6 @@ export default function Home() {
         <SummaryCards logs={logs} />
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="lg:col-span-2 flex flex-col gap-8">
-            <DocumentationViewer />
             <InputGenerator 
               onGenerate={handleGenerateInputs} 
               generatedInputs={generatedInputs}
