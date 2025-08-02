@@ -58,7 +58,7 @@ export function DocumentationViewer() {
         <Tooltip>
           <TooltipTrigger asChild>
             <DialogTrigger asChild>
-              <Button variant="outline">
+              <Button variant="outline" className="border-2 border-white/20">
                 <BookOpen className="h-5 w-5 mr-2" />
                 Documentation
               </Button>
