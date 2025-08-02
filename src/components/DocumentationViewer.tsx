@@ -73,10 +73,19 @@ export function DocumentationViewer() {
         <DialogHeader>
           <DialogTitle className='flex items-center justify-between'>
             Application Documentation
-            <Button variant="ghost" size="icon" onClick={generatePdf}>
-              <Download className="h-5 w-5" />
-              <span className='sr-only'>Export to PDF</span>
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" onClick={generatePdf}>
+                    <Download className="h-5 w-5" />
+                    <span className='sr-only'>Export to PDF</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Download documentation as PDF</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </DialogTitle>
         </DialogHeader>
         <ScrollArea className="flex-grow pr-6">
