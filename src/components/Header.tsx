@@ -18,7 +18,7 @@ export function Header() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <a href="mailto:sginsbourg@gmail.com">
+                <a href="mailto:sginsbourg@gmail.com?subject=Support%20request%20on%20TestWise%20AI%20Open%20Source">
                   <Button variant="outline" className="border-2 border-white/20">
                     <LifeBuoy className="h-5 w-5 mr-2" />
                     Support
