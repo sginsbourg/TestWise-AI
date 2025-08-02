@@ -71,5 +71,26 @@ export const documentation = {
       label: "Qualitative Feedback Assessment",
       tooltip: "This is the AI's detailed analysis of the model's output, based on the feedback you provided. Click to expand and read the assessment."
     }
+  },
+  forMoreInformation: {
+    title: "For more information:",
+    name: "Shay Ginsbourg",
+    roles: [
+      "AI-Powered Software Testing Consultant.",
+      "Performance, Automation, and Load Testing Expert.",
+      "Regulatory Affairs Consultant for Medical Software.",
+    ],
+    website: "Ginsbourg.co.il (Since 2008)",
+    experience: "Formerly QA Manager of LoadRunner at Mercury Interactive",
+    education: [
+      "M.Sc. cum laude in Bio-Medical Engineering",
+      "M.Sc. in Mechanical Engineering"
+    ],
+    contact: {
+      mobile: "+972(0)54-6690915",
+      email: "sginsbourg@gmail.com"
+    },
+    linkedin: "http://www.linkedin.com/in/shayginsbourg",
+    github: "https://github.com/sginsbourg/TestWise-AI"
   }
 };
