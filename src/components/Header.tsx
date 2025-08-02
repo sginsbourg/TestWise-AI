@@ -2,6 +2,19 @@
 import { FlaskConical } from 'lucide-react';
 import { DocumentationViewer } from '@/components/DocumentationViewer';
 
+const OpenSourceLogo = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 512 512" 
+    className="h-8 w-8 text-primary" 
+    style={{ filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.4))' }}
+    fill="currentColor"
+  >
+    <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224c123.7 0 224-100.3 224-224S379.7 32 256 32zm0 395.7c-94.8 0-171.7-76.9-171.7-171.7S161.2 84.3 256 84.3 427.7 161.2 427.7 256 350.8 427.7 256 427.7z"/>
+    <path d="M276.9 141.9c-29-20.9-68-15.6-92.4 12.3-25.1 28.6-22.9 71.1 5.6 96.2l-45.3 45.3c-21.3 21.3-21.3 55.9 0 77.2 21.3 21.3 55.9 21.3 77.2 0l45.3-45.3c25.1 28.6 67.6 30.7 96.2 5.6 28.6-25.1 30.7-67.6 5.6-96.2l-22.4-22.4c-20.9-29-15.6-68 12.3-92.4-28.5-25.1-71-22.9-96.1 5.6z"/>
+  </svg>
+)
+
 export function Header() {
   return (
     <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
@@ -11,6 +24,7 @@ export function Header() {
           <h1 className="text-3xl font-bold tracking-tight text-foreground" style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)' }}>
             TestWise AI
           </h1>
+          <OpenSourceLogo />
         </div>
         <DocumentationViewer />
       </div>
