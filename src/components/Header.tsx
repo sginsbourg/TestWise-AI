@@ -24,7 +24,9 @@ export function Header() {
           <h1 className="text-3xl font-bold tracking-tight text-foreground" style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)' }}>
             TestWise AI
           </h1>
-          <OpenSourceLogo />
+          <a href="https://opensource.org/" target="_blank" rel="noopener noreferrer" aria-label="Open Source Initiative Website">
+            <OpenSourceLogo />
+          </a>
         </div>
         <DocumentationViewer />
       </div>
