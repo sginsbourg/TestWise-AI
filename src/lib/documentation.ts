@@ -11,6 +11,10 @@ export type DocCategory = {
 };
 
 export const documentation = {
+  general: {
+    title: "About TestWise AI",
+    description: "TestWise AI is a comprehensive suite of tools designed to streamline and enhance the process of testing artificial intelligence models. At its core, this application provides developers and QA professionals with the means to systematically evaluate AI behavior, identify weaknesses, and ensure robustness. By offering features for diverse input generation, detailed logging, qualitative feedback, and automated pattern recognition, TestWise AI aims to foster a rigorous and efficient testing culture, ultimately leading to more reliable and trustworthy AI systems."
+  },
   inputGenerator: {
     title: "Diverse Input Generator",
     description: "This tool uses an AI to generate a variety of test inputs based on your model's description. It helps you explore edge cases, common scenarios, and potential failure points automatically. A good description leads to more relevant and effective test inputs.",
