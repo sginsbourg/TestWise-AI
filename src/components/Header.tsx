@@ -18,13 +18,15 @@ export function Header() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="outline" className="border-2 border-white/20" disabled>
-                  <LifeBuoy className="h-5 w-5 mr-2" />
-                  Support
-                </Button>
+                <a href="mailto:sginsbourg@gmail.com">
+                  <Button variant="outline" className="border-2 border-white/20">
+                    <LifeBuoy className="h-5 w-5 mr-2" />
+                    Support
+                  </Button>
+                </a>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Support is coming soon!</p>
+                <p>Contact support via email</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
