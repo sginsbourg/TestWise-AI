@@ -31,7 +31,9 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
           <PlayCircle className="h-6 w-6 text-primary" />
           <CardTitle>AI Model Tester</CardTitle>
         </div>
-        <CardDescription>Input text and a scenario to test the model's response.</CardDescription>
+        <CardDescription>
+          Manually test your AI model with specific inputs and scenarios. This allows for targeted testing of known problem areas or new use cases. The results will be added to the Test Logs.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <TooltipProvider>
@@ -42,7 +44,7 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
                   <Label htmlFor="test-scenario">Test Scenario</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Describe the situation or context for this test case.</p>
+                  <p>Describe the context for this test. For example, "Testing a sarcastic comment" or "Testing a long sentence".<br/> This helps when analyzing the results later.</p>
                 </TooltipContent>
               </Tooltip>
               <Input
@@ -58,7 +60,7 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
                   <Label htmlFor="test-input">Input for Model</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Enter the text you want to send to the AI model for testing.</p>
+                  <p>Enter the exact text you want to send to the AI model for this test case. <br/>You can paste inputs from the generator or write your own.</p>
                 </TooltipContent>
               </Tooltip>
               <Textarea
@@ -76,7 +78,7 @@ export function ModelTester({ onRunTest }: ModelTesterProps) {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Execute the test with the provided scenario and input.</p>
+                <p>Execute the test with the provided scenario and input. <br/>A new log entry will be created with the model's output.</p>
               </TooltipContent>
             </Tooltip>
           </div>

@@ -21,7 +21,10 @@ export function LogSummarizer({ onSummarize, summary, isLoading, hasLogs }: LogS
           <FileText className="h-6 w-6 text-primary" />
           <CardTitle>Automated Log Summarizer</CardTitle>
         </div>
-        <CardDescription>Use AI to find recurring patterns in test failures.</CardDescription>
+        <CardDescription>
+          This feature uses AI to analyze all of your test logs. It automatically identifies and summarizes recurring failure patterns, 
+          helping you quickly pinpoint your model's weaknesses.
+        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <TooltipProvider>
@@ -39,7 +42,7 @@ export function LogSummarizer({ onSummarize, summary, isLoading, hasLogs }: LogS
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Analyze all test logs to automatically identify failure patterns and create a summary.</p>
+              <p>Click this button to have an AI analyze all the test results from the log below. <br/> It will produce a summary highlighting common failure themes and potential issues.</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

@@ -42,7 +42,10 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
           <Lightbulb className="h-6 w-6 text-primary" />
           <CardTitle>Diverse Input Generator</CardTitle>
         </div>
-        <CardDescription>Generate varied test inputs to probe the AI model.</CardDescription>
+        <CardDescription>
+          This tool uses an AI to generate a variety of test inputs based on your model's description. 
+          It helps you explore edge cases, common scenarios, and potential failure points automatically.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <TooltipProvider>
@@ -53,7 +56,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                   <Label htmlFor="model-description">Model Description</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Describe the AI model you want to test. This helps generate relevant inputs.</p>
+                  <p>Clearly describe the AI model you want to test, including its purpose and expected input types. <br/>A good description leads to more relevant and effective test inputs.</p>
                 </TooltipContent>
               </Tooltip>
               <Textarea
@@ -71,7 +74,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                   <Label htmlFor="num-inputs">Number of Inputs</Label>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Choose how many different test inputs to generate (1-10).</p>
+                  <p>Select the number of distinct test inputs you want the AI to generate. <br/>You can choose between 1 and 10 inputs per generation.</p>
                 </TooltipContent>
               </Tooltip>
               <Input
@@ -96,7 +99,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Click to generate diverse inputs based on your model description.</p>
+                <p>Click here to trigger the AI-powered input generation. <br/>The generated inputs will appear below, ready to be copied and used for testing.</p>
               </TooltipContent>
             </Tooltip>
           </form>
@@ -117,7 +120,7 @@ export function InputGenerator({ onGenerate, generatedInputs, isLoading }: Input
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Copy this input to your clipboard.</p>
+                        <p>Copy this input to your clipboard. You can then paste it into the 'AI Model Tester' to run a test.</p>
                       </TooltipContent>
                     </Tooltip>
                   </li>
