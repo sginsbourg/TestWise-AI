@@ -69,7 +69,7 @@ export function DocumentationViewer() {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <DialogContent className="max-w-4xl h-[90vh] flex flex-col">
+      <DialogContent className="max-w-4xl h-[90vh] flex flex-col border-white/20">
         <DialogHeader>
           <DialogTitle className='flex items-center justify-between'>
             Application Documentation
