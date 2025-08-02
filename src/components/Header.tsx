@@ -1,6 +1,8 @@
 
-import { FlaskConical } from 'lucide-react';
+import { FlaskConical, LifeBuoy } from 'lucide-react';
 import { DocumentationViewer } from '@/components/DocumentationViewer';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export function Header() {
   return (
@@ -13,6 +15,19 @@ export function Header() {
           </h1>
         </div>
         <div className="flex items-center gap-4">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" className="border-2 border-white/20" disabled>
+                  <LifeBuoy className="h-5 w-5 mr-2" />
+                  Support
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Support is coming soon!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <DocumentationViewer />
         </div>
       </div>
